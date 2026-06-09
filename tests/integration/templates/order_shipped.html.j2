@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Your Order Has Shipped!</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">📦 Your order has shipped!</div>
+
+        <p>Hi {{ customer_name }},</p>
+
+        <p>We're happy to let you know that your order <strong>#{{ order_id }}</strong> has been shipped.</p>
+
+        <div class="order-details">
+            <p><strong>Shipping Address:</strong><br>
+                {{ shipping_address }}</p>
+
+            <p><strong>Carrier:</strong> {{ carrier }}<br>
+                <strong>Tracking Number:</strong> {{ tracking_number }}
+            </p>
+        </div>
+
+        <p>Thank you for shopping with us!</p>
+
+        <div class="footer">
+            If you have any questions, reply to this email or contact our support team.
+        </div>
+    </div>
+</body>
+
+</html>
