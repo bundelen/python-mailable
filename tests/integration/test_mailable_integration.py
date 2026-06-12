@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+
 from python_mailable.mailable import Mailable
 
 
