@@ -7,7 +7,6 @@ from jinja2 import Environment, FileSystemLoader
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
-
 @dataclass
 class Mailable(ABC):
     _to_email: Optional[str] = None
