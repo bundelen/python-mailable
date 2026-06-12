@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Optional, Self
+from typing import Any, Self
 
 from jinja2 import Environment, FileSystemLoader
 
@@ -10,7 +10,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 @dataclass
 class Mailable(ABC):
-    _to_email: Optional[str] = None
+    _to_email: str | None = None
     _to_cc: list[str] = field(default_factory=list)
     _to_bcc: list[str] = field(default_factory=list)
 
@@ -59,7 +59,9 @@ class Mailable(ABC):
         """Subclasses define how the email is built."""
         pass
 
-    def render(self, project_root: Path = PROJECT_ROOT, as_text: bool = False) -> Optional[str]:
+    def render(
+        self, project_root: Path = PROJECT_ROOT, as_text: bool = False
+    ) -> str | None:
         template_path = self._text_template_path if as_text else self._template_path
 
         if not template_path:
@@ -74,5 +76,5 @@ class Mailable(ABC):
 
         return template.render(**self._context)
 
-    def render_as_text(self, project_root: Path = PROJECT_ROOT) -> Optional[str]:
+    def render_as_text(self, project_root: Path = PROJECT_ROOT) -> str | None:
         return self.render(project_root, as_text=True)
