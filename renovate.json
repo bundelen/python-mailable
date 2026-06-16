@@ -3,8 +3,7 @@
   "extends": ["config:recommended", "group:all"],
   "packageRules": [
     {
-      "matchManagers": ["pep621"],
-      "matchDepTypes": ["requires-python"],
+      "matchFileNames": [".python-version"],
       "enabled": false
     }
   ]
